@@ -1,0 +1,30 @@
+<form [formGroup] = "formularioPanel">
+  <div class="container">
+    <div class="row">
+      <p>Número de páginas <button (click)="sumarPaginas()" class="btn rounded shadow">+</button> <input type="number" [value]="formularioPanel.get('numPaginas')?.value"> <button (click)="restarPaginas()" class="btn rounded shadow">-</button></p>
+    </div>
+    <div class="row">
+      <p>Número de idiomas<button (click)="sumarIdiomas()" class="btn rounded shadow">+</button> <input type="number" [value]="formularioPanel.get('numIdiomas')?.value"> <button (click)="restarIdiomas()" class="btn rounded shadow">-</button></p>
+    </div>  
+  </div>
+</form>
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

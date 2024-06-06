@@ -1,0 +1,77 @@
+<form [formGroup] = "formularioHome">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center mt-5">
+        <h1>Consigue la mejor calidad</h1>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="card mt-5 m-3">
+          <div class="card-body d-flex align-items-center">
+            <h5 class="card-title m-5">Seo</h5>
+            <h6 class="card-subtitle m-5">Programación de una web responsive completa</h6>
+            <p class="card-text m-5">300€</p>
+            <p class="mb-0"><input type="checkbox" formControlName="seo" (change)="onChangeSeo($event)">Añadir</p>
+          </div>
+        </div>
+      </div>    
+    </div> 
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="card m-3">
+          <div class="card-body d-flex align-items-center">
+            <h5 class="card-title m-5">Ads</h5>
+            <h6 class="card-subtitle m-5">Programación de una web responsive completa</h6>
+            <p class="card-text m-5">400€</p>
+            <p class="mb-0"><input type="checkbox" formControlName="ads" (change)="onChangeAds($event)">Añadir</p>
+          </div>
+        </div>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="card m-3">
+          <div class="card-body d-flex align-items-center">
+            <h5 class="card-title m-5">Ads</h5>
+            <h6 class="card-subtitle m-5">Programación de una web responsive completa</h6>
+            <p class="card-text m-5">500€</p>
+            <p class="mb-0"><input type="checkbox" formControlName="web" (change)="onChangeWeb($event)">Añadir</p>                                    
+          </div>
+          @if(formularioHome.get('web')?.value){
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <app-panel></app-panel>
+              </div>            
+            </div>
+          }          
+        </div>
+      </div>    
+    </div> 
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <p>Precio presupuestado:</p>
+        <p>{{precioTotal}}</p>
+      </div>    
+    </div>
+  </div>
+</form>
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
