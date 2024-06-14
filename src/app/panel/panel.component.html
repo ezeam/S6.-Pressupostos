@@ -1,12 +1,37 @@
-<form [formGroup] = "formularioPanel">
+<form [formGroup] = "formularioPanel" (submit)="validaciones()">
   <div class="container">
     <div class="row">
-      <p>Número de páginas <button (click)="sumarPaginas()" class="btn rounded shadow">+</button> <input type="number" [value]="formularioPanel.get('numPaginas')?.value"> <button (click)="restarPaginas()" class="btn rounded shadow">-</button></p>
+      <div class="col d-flex justify-content-center align-items-center">
+        <label for="paginas">Número de páginas:</label>
+        <button (click)="restar('paginas')" class="btn btn-redondo ms-2 me-2">-</button>
+        <input type="number" formControlName="paginas" value="1"/> 
+        <button (click)="sumar('paginas')" class="btn btn-redondo ms-2 me-2">+</button>
+      </div>               
     </div>
     <div class="row">
-      <p>Número de idiomas<button (click)="sumarIdiomas()" class="btn rounded shadow">+</button> <input type="number" [value]="formularioPanel.get('numIdiomas')?.value"> <button (click)="restarIdiomas()" class="btn rounded shadow">-</button></p>
+      <div class="col d-flex justify-content-center align-items-center">
+        <label for="idiomas">Número de idiomas:</label>      
+        <button (click)="restar('idiomas')" class="btn btn-redondo ms-2 me-2">-</button>
+        <input type="number" formControlName="idiomas" value="1"> 
+        <button (click)="sumar('idiomas')" class="btn btn-redondo ms-2 me-2">+</button>
+      </div>      
     </div>  
   </div>
+  @if(formularioPanel.get('paginas')?.value < 1){
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <p>El número de páginas ha de ser mayor a 1</p>
+      </div>            
+    </div>
+  }   
+  @if(formularioPanel.get('idiomas')?.value < 1){
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <p>El número de idiomas ha de ser mayor a 1</p>
+      </div>            
+    </div>
+  }   
+  <p>Total Cost: {{ costeExtra }} €</p>
 </form>
  
   

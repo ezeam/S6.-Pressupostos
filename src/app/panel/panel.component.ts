@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BudgetService } from '../services/budget.service';
 
 @Component({
   selector: 'app-panel',
@@ -10,51 +11,51 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PanelComponent {
   formularioPanel: FormGroup;
+  costeExtra: number = 0;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.formularioPanel = this.fb.group({
-      numPaginas: 1,
-      numIdiomas: 1
+      paginas: [1, [Validators.required, Validators.min(1)]],
+      idiomas: [1, [Validators.required, Validators.min(1)]]
     });
+    //this.formularioPanel.get('paginas')?.valueChanges.subscribe(values =>{
+     //this.costeExtra = this.calcularPresupuesto();
+    //});
   }
 
-  sumarPaginas() {
-    let numPaginas = this.formularioPanel.get('numPaginas')?.value;
-      console.log("Número de páginas", numPaginas);
-          
-      numPaginas += 1;
-      this.formularioPanel.get('numPaginas')?.setValue(numPaginas); 
-  }
-
-  restarPaginas() {
-    let numPaginas = this.formularioPanel.get('numPaginas')?.value;
-    console.log("Número de páginas", numPaginas);
-    if(numPaginas > 1){
-      numPaginas -= 1;
-      this.formularioPanel.get('numPaginas')?.setValue(numPaginas);
+  calcularPresupuesto(){
+    const { paginas, idiomas } = this.formularioPanel.value;
+    if(this.formularioPanel.valid){
+      this.costeExtra = this.budgetService.calcularCoste(paginas, idiomas)
     }
-    else {
-      alert("No puede haber menos de 1 página")
-    }    
   }
 
-  sumarIdiomas() {
-    let numIdiomas = this.formularioPanel.get('numIdiomas')?.value;
-      console.log("Número de idiomas", numIdiomas);          
-      numIdiomas += 1;
-      this.formularioPanel.get('numIdiomas')?.setValue(numIdiomas);
+  validaciones() {
+    if(this.formularioPanel.invalid){
+      return 
+    }
   }
 
-  restarIdiomas() {
+  sumar(campo: string) {
+    const valorInput = this.formularioPanel.get(campo);
+    if (valorInput) {
+      valorInput.setValue(valorInput.value + 1);
+    }
     
-    let numIdiomas = this.formularioPanel.get('numIdiomas')?.value;
-    console.log("Número de idiomas", numIdiomas);
-    if(numIdiomas > 1){
-      numIdiomas -= 1;
-      this.formularioPanel.get('numIdiomas')?.setValue(numIdiomas);
-    }
-    else {
-      alert("No puede haber menos de 1 idioma")
-    }
+    
+    //let valorActual = this.formularioPanel.get(campo)?.value;
+    //console.log("Valor actual suma: ", valorActual);
+    //this.formularioPanel.get(campo)?.setValue(valorActual + 1);    
+    
+    
+    //valorActual += 1;
+    //this.formularioPanel.get('numPaginas')?.setValue(valorActual); 
+  }
+
+  restar(campo: string) {
+    let valorInput = this.formularioPanel.get(campo);
+    if (valorInput) {
+      valorInput.setValue(valorInput.value - 1);
+    }   
   }
 }

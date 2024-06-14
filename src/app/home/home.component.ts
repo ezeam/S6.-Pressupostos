@@ -27,11 +27,21 @@ export class HomeComponent {
   }
 
   onChangeSeo(event: Event): void {
+    console.log("Evento que envia el html", event);
     const input = event.target as HTMLInputElement;
     if (input.checked) {
       this.precioTotal += this.precioSeo;
     } else {
       this.precioTotal -= this.precioSeo;
+    }
+  }
+
+  onChangeWeb(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.checked) {
+      this.precioTotal += this.precioWeb;
+    } else {
+      this.precioTotal -= this.precioWeb;
     }
   }
 
@@ -44,14 +54,7 @@ export class HomeComponent {
     }
   }
 
-  onChangeWeb(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.checked) {
-      this.precioTotal += this.precioWeb;
-    } else {
-      this.precioTotal -= this.precioWeb;
-    }
-  }
+  
 }
 
 

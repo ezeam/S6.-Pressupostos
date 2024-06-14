@@ -1,0 +1,7 @@
+@media (max-width: 991.98px) {
+  .col {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem; /* Añade un margen inferior entre tarjetas */
+  }
+}
