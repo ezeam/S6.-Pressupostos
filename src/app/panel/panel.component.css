@@ -1,17 +1,17 @@
 input[type="number"] {
-  width: 40px; /* Ancho deseado */
-  height: 20px; /* Alto deseado */
-  font-size: 12px; /* Tamaño de fuente deseado */
+  width: 40px;
+  height: 20px;
+  font-size: 12px;
 }
 
- /* Oculta la flecha para aumentar en el elemento de entrada de número */
+ /* Oculta la flecha que viene por defecto para aumentar el inputo */
  input[type="number"]::-webkit-inner-spin-button,
  input[type="number"]::-webkit-outer-spin-button {
    -webkit-appearance: none;
    margin: 0;
  }
 
- /* Oculta la flecha para disminuir en el elemento de entrada de número */
+ /* Oculta la flecha que viene por defecto para disminuir el input */
  input[type="number"] {
    -moz-appearance: textfield;
    appearance: none;
@@ -26,5 +26,14 @@ input[type="number"] {
   justify-content: center;
   padding: 0;
   border: 0.1px solid black;
+}
+
+.botonInfoPaginas, 
+.botonInfoIdiomas, 
+.botonRestar, 
+.botonSumar{
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent;
 }
  

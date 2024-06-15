@@ -2,18 +2,48 @@
   <div class="container">
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
+        <button class="botonInfoPaginas btn" data-bs-toggle="modal" data-bs-target="#modalInfoPaginas">
+          <i class="bi bi-info-circle"></i>
+        </button>
+        <div class="modal fade" id="modalInfoPaginas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Número de idiomas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Añade los idiomas que tendrá tu proyecto. El coste de cada idioma es de 30€.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <label for="paginas">Número de páginas:</label>
-        <button (click)="restar('paginas')" class="btn btn-redondo ms-2 me-2">-</button>
+        <button class="botonRestar" (click)="restar('paginas')" >
+          <i class="bi bi-dash-circle"></i>
+        </button>
         <input type="number" formControlName="paginas" value="1"/> 
-        <button (click)="sumar('paginas')" class="btn btn-redondo ms-2 me-2">+</button>
+        <button class="botonSumar" (click)="sumar('paginas')" >
+          <i class="bi bi-plus-circle"></i>
+        </button>
       </div>               
     </div>
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
+        <button class="botonInfoIdiomas" (click)="restar('idiomas')">
+          <i class="bi bi-info-circle"></i>
+        </button>
         <label for="idiomas">Número de idiomas:</label>      
-        <button (click)="restar('idiomas')" class="btn btn-redondo ms-2 me-2">-</button>
+        <button class="botonRestar" (click)="restar('idiomas')" >
+          <i class="bi bi-dash-circle"></i>
+        </button>
         <input type="number" formControlName="idiomas" value="1"> 
-        <button (click)="sumar('idiomas')" class="btn btn-redondo ms-2 me-2">+</button>
+        <button class="botonSumar" (click)="sumar('idiomas')" >
+          <i class="bi bi-plus-circle"></i>
+        </button>
       </div>      
     </div>  
   </div>
