@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
+import { ModalComponent } from '../modal/modal.component';
+
 
 @Component({
-  selector: 'app-panel',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './panel.component.html',
-  styleUrl: './panel.component.css'
+    selector: 'app-panel',
+    standalone: true,
+    templateUrl: './panel.component.html',
+    styleUrl: './panel.component.css',
+    imports: [ReactiveFormsModule, ModalComponent]
 })
 export class PanelComponent {
   formularioPanel: FormGroup;
@@ -45,4 +47,12 @@ export class PanelComponent {
       this.calcularCoste();
     }   
   }
+
+  abrirModal():boolean {
+    console.log("¿Entras?");
+       
+    return true;
+  }
 }
+
+

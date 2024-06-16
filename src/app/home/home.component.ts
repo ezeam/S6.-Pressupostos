@@ -72,16 +72,13 @@ export class HomeComponent {
     }
 
     this.precioTotal = this.precioParcial;
+    console.log("precioParcial al salir de la primera función: ", this.precioParcial);
   }
 
   actualizarPrecioTotal(coste: number): void {
-    console.log("Precio total al entrar: ", this.precioTotal);
-    console.log("Precio parcial al entrar: ", this.precioParcial);
-    console.log("Coste que llega del panel: ", coste)
+    this.calcularPrecioParcial();
     this.precioTotal = this.precioParcial;
-    console.log("Precio total al que se le ha asignado el precio parcial: ", this.precioTotal);
     this.precioTotal = this.precioTotal + coste;
-    console.log("Precio total final: ", this.precioTotal);
   }
 
   

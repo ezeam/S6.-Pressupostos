@@ -49,7 +49,7 @@
               <p class="card-text mx-5 my-4">{{precioWeb}}</p>
               <p class="mb-0 m-2"><input type="checkbox" formControlName="web" (change)="onChangeWeb($event)">Añadir</p>                                    
             </div>
-            @if(formularioHome.get('web')?.value){
+           @if (formularioHome.get('web')?.value){
               <div class="row">
                 <div class="col-12 d-flex justify-content-end">
                   <app-panel (cambioCoste)="actualizarPrecioTotal($event)"></app-panel>
