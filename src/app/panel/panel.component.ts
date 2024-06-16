@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
 
@@ -11,51 +11,38 @@ import { BudgetService } from '../services/budget.service';
 })
 export class PanelComponent {
   formularioPanel: FormGroup;
-  costeExtra: number = 0;
+  @Output() cambioCoste = new EventEmitter<number>();
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.formularioPanel = this.fb.group({
       paginas: [1, [Validators.required, Validators.min(1)]],
       idiomas: [1, [Validators.required, Validators.min(1)]]
     });
-    //this.formularioPanel.get('paginas')?.valueChanges.subscribe(values =>{
-     //this.costeExtra = this.calcularPresupuesto();
-    //});
   }
 
-  calcularPresupuesto(){
-    const { paginas, idiomas } = this.formularioPanel.value;
-    if(this.formularioPanel.valid){
-      this.costeExtra = this.budgetService.calcularCoste(paginas, idiomas)
-    }
+  calcularCoste(): void {
+    const numPaginas = this.formularioPanel.get('paginas')?.value || 1;
+    const numIdiomas = this.formularioPanel.get('idiomas')?.value || 1;
+    const coste = this.budgetService.calcularCoste(numPaginas, numIdiomas);
+    this.cambioCoste.emit(coste);
   }
 
-  validaciones() {
-    if(this.formularioPanel.invalid){
-      return 
-    }
-  }
-
-  sumar(campo: string) {
+  sumar(campo: string): void {
     const valorInput = this.formularioPanel.get(campo);
     if (valorInput) {
       valorInput.setValue(valorInput.value + 1);
-    }
-    
-    
-    //let valorActual = this.formularioPanel.get(campo)?.value;
-    //console.log("Valor actual suma: ", valorActual);
-    //this.formularioPanel.get(campo)?.setValue(valorActual + 1);    
-    
-    
-    //valorActual += 1;
-    //this.formularioPanel.get('numPaginas')?.setValue(valorActual); 
+      this.calcularCoste();
+    } 
   }
 
-  restar(campo: string) {
-    let valorInput = this.formularioPanel.get(campo);
+  restar(campo: string): void {
+    const valorInput = this.formularioPanel.get(campo);
     if (valorInput) {
       valorInput.setValue(valorInput.value - 1);
+      if(valorInput.value < 0){
+        valorInput.setValue(1);
+      }
+      this.calcularCoste();
     }   
   }
 }

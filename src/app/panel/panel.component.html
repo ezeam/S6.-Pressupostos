@@ -1,4 +1,4 @@
-<form [formGroup] = "formularioPanel" (submit)="validaciones()">
+<form [formGroup] = "formularioPanel">
   <div class="container">
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
@@ -37,7 +37,7 @@
           <i class="bi bi-info-circle"></i>
         </button>
         <label for="idiomas">Número de idiomas:</label>      
-        <button class="botonRestar" (click)="restar('idiomas')" >
+        <button class="botonRestar" (click)="restar('idiomas') " >
           <i class="bi bi-dash-circle"></i>
         </button>
         <input type="number" formControlName="idiomas" value="1"> 
@@ -61,7 +61,6 @@
       </div>            
     </div>
   }   
-  <p>Total Cost: {{ costeExtra }} €</p>
 </form>
  
   
