@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
 import { ModalComponent } from '../modal/modal.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -9,13 +10,15 @@ import { ModalComponent } from '../modal/modal.component';
     standalone: true,
     templateUrl: './panel.component.html',
     styleUrl: './panel.component.css',
-    imports: [ReactiveFormsModule, ModalComponent]
+    imports: [ReactiveFormsModule, ModalComponent, CommonModule]
 })
 export class PanelComponent {
   formularioPanel: FormGroup;
   @Output() cambioCoste = new EventEmitter<number>();
+  @ViewChild('modalComponent') modalComponent?: ModalComponent;
+ 
 
-  constructor(private fb: FormBuilder, private budgetService: BudgetService) {
+  constructor(private fb: FormBuilder, private budgetService: BudgetService, private cdr: ChangeDetectorRef) {
     this.formularioPanel = this.fb.group({
       paginas: [1, [Validators.required, Validators.min(1)]],
       idiomas: [1, [Validators.required, Validators.min(1)]]
@@ -48,11 +51,20 @@ export class PanelComponent {
     }   
   }
 
-  abrirModal():boolean {
-    console.log("¿Entras?");
-       
-    return true;
+  /*abrirModal():void {
+    console.log("¿Entras al abrir?");
+    this.modalVisible = true;
   }
+
+  cerrarModal():void {
+    console.log("¿Entras al cerrar?");
+    this.modalVisible = false;
+  }*/
+
+    abrirModal() {
+      console.log("Entras en el abrir modal del panel?");
+      this.modalComponent?.abrirModal('Número de páginas', 'Añade las páginas que tendrá tu proyecto. El coste de cada página extra es de 30€');
+    }
 }
 
 

@@ -1,17 +1,22 @@
-      <div class="modal fade" id="modalInfoPaginas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal" tabindex="-1" role="dialog" [class.show]="visible" [style.display]="visible ? 'block' : 'none'">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Número de idiomas</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title">{{ titulo }}</h5>
+              <!-- <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
             </div>
             <div class="modal-body">
-              Añade los idiomas que tendrá tu proyecto. El coste de cada idioma es de 30€.
+              <p>{{ contenido }}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
             </div>
           </div>
         </div>
       </div>
+      
+      
+      
    

@@ -2,12 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
-        <button class="botonInfoPaginas btn" (click)="abrirModal()">
+        <button type="button" class="botonInfoPaginas" (click)="abrirModal()">
           <i class="bi bi-info-circle"></i>
-        </button>
-        @if(1 == 1){
-          <app-modal></app-modal>
-        }              
+        </button>             
         <label for="paginas">Número de páginas:</label>
         <button class="botonRestar" (click)="restar('paginas')" >
           <i class="bi bi-dash-circle"></i>
@@ -47,7 +44,8 @@
         <p>El número de idiomas ha de ser mayor a 1</p>
       </div>            
     </div>
-  }   
+  } 
+  <app-modal #modalComponent></app-modal>  
 </form>
  
   
