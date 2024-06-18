@@ -51,19 +51,18 @@ export class PanelComponent {
     }   
   }
 
-  /*abrirModal():void {
-    console.log("¿Entras al abrir?");
-    this.modalVisible = true;
-  }
-
-  cerrarModal():void {
-    console.log("¿Entras al cerrar?");
-    this.modalVisible = false;
-  }*/
-
-    abrirModal() {
-      console.log("Entras en el abrir modal del panel?");
-      this.modalComponent?.abrirModal('Número de páginas', 'Añade las páginas que tendrá tu proyecto. El coste de cada página extra es de 30€');
+    abrirModal(tipo: string): void {
+      if(tipo === "paginas"){
+        console.log("Entras en el abrir modal del panel de PÁGINAS?");
+        this.modalComponent?.abrirModalComponent('Número de páginas', 
+                                        'Añade las páginas que tendrá tu proyecto. El coste de cada página extra es de 30€');
+      }
+      else if(tipo === "idiomas"){
+        console.log("Entras en el abrir modal del panel de IDIOMAS?");
+        this.modalComponent?.abrirModalComponent('Número de idiomas', 
+                                        'Añade los idiomas que tendrá tu proyecto. El coste de cada idioma extra es de 30€');
+      }
+      
     }
 }
 

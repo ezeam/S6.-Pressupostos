@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
-        <button type="button" class="botonInfoPaginas" (click)="abrirModal()">
+        <button type="button" class="botonInfoPaginas" (click)='abrirModal("paginas")'>
           <i class="bi bi-info-circle"></i>
         </button>             
         <label for="paginas">Número de páginas:</label>
@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
-        <button class="botonInfoIdiomas" (click)="restar('idiomas')">
+        <button type="button" class="botonInfoIdiomas" (click)='abrirModal("idiomas")'>
           <i class="bi bi-info-circle"></i>
         </button>
         <label for="idiomas">Número de idiomas:</label>      

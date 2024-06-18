@@ -12,7 +12,7 @@ export class ModalComponent {
   titulo: string = '';
   contenido: string = '';
 
-  abrirModal(titulo: string, contenido: string) {
+  abrirModalComponent(titulo: string, contenido: string) {
     console.log("Entras en el abrir modal del modal?");
     this.titulo = titulo;
     this.contenido = contenido;
