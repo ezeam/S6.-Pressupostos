@@ -1,9 +1,10 @@
 <form [formGroup] = "formularioHome">
   <div class="container">
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center mt-5">
-        <h1>Consigue la mejor calidad</h1>
-      </div>    
+    <div class="row d-flex justify-content-center ">
+      <div class="divTitulo col-12 d-flex justify-content-center mt-5 " >
+        <img src="assets/fondo1.jpg" alt="img fondo" class="fotoTitulo img-fluid rounded bg"/>
+        <h1 style="position: relative; z-index: 1; color: black; margin: auto;">Consigue la mejor calidad</h1>
+      </div>   
     </div>    
     <div class="container mt-5">
       <div class="row justify-content-center">
@@ -103,39 +104,15 @@
           </div>
         </div>
       </div>
-    </div>
-    
-      
-
-    <!-- <div class="container mt-5">
-      <div class="row">
-        <div class="col d-flex justify-content-center">
-          <div class="card mt-1">
-            <div class="card-body d-flex flex-column flex-lg-row align-items-center">
-              <h5 class="card-title m-2">Web</h5>
-              <h6 class="card-subtitle m-2">Programación de una web responsive completa</h6>
-              <h3 class="card-text mx-5 my-4 fw-bold">{{precioWeb}}€</h3>
-              <p class="mb-0 m-2"><input type="checkbox" formControlName="web" (change)="onChangeWeb($event)">Añadir</p>                                    
-            </div>
-           @if (formularioHome.get('web')?.value){
-              <div class="row">
-                <div class="col-12 d-flex justify-content-end">
-                  <app-panel (cambioCoste)="actualizarPrecioTotal($event)"></app-panel>
-                </div>            
-              </div>
-            }          
-          </div>
-        </div>    
-      </div>
-    </div> -->
-     
-    <div class="row">
+    </div>     
+    <div class="row mt-5">
       <div class="col d-flex justify-content-center">
-        <p>Precio presupuestado:</p>
+        <h3 class="fw-bold">Precio presupuestado:</h3>
         <p>{{precioTotal}}</p>
       </div>    
     </div>
   </div>
+  <app-datos-personales-presupuesto></app-datos-personales-presupuesto>
 </form>
  
   

@@ -5,11 +5,12 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { ModalComponent } from '../modal/modal.component';
+import { DatosPersonalesPresupuestoComponent } from '../datos-personales-presupuesto/datos-personales-presupuesto.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, PanelComponent, ModalComponent],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, PanelComponent, ModalComponent, DatosPersonalesPresupuestoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
